@@ -1,33 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+*{
+  font-family: "Jost", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.btn-color{
+  background-color: #0dcaf0;
+}
+.hover-btn:hover{
+  background-color: #0dcaf0;
+  color: white;
+}
+.text-hover:hover{
+  color: #0dcaf0;
+}
+
+.bg-img{
+  background-image: url('/herohome.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  min-height: 132px;
+  max-height: 165px;
+}
+
+@media (min-width: 1024px){
+  .bg-img{
+  min-height: 446px;
+  max-height:448px ;
+}
+}
+
+.section-one-bg-color{
+  background-color: #F5F3F3;
+}
+
+.section-four-bg{
+background-color: rgba(13, 202, 240, 0.3);
+}
+
+@media(min-width: 1024px){
+
+  .login-bg{
+    background-image: url('/login.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 2.5rem;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@media(min-width: 1024px){
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .signup-bg{
+    background-image: url('/signup.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     padding-top: 3.5rem;
+     padding-bottom: 3.5rem;
   }
 }
+
+
+
