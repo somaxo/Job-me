@@ -6,15 +6,15 @@ const SectionOne = () => {
   return (
     <div className="section-one-bg-color ">
       <div className="container w-11/12  h-[770px] mx-auto pt-5 md:h-[580px] lg:h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:justify-between lg:items-center lg:gap-14 lg:mt-8 2xl:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:justify-between lg:items-center lg:gap-12 lg:mt-8 2xl:gap-20">
           <Image
             src="/four-people.png"
             alt=""
-            className=" hidden lg:block 2xl:w-[600px]"
+            className=" hidden lg:block lg:pl-3 2xl:w-[600px]"
             width={450}
             height={450}
           />
-          <div className=" mb-10 ">
+          <div className=" mb-10">
             <h2 className="text-xl font-semibold mb-3 md:text-2xl lg:mt-7 lg:text-3xl 2xl:text-6xl 2xl:mb-10">
               Find Millions of job Opportunities Right for You!
             </h2>
@@ -35,8 +35,8 @@ const SectionOne = () => {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2  lg:w-full lg:justify-between lg:items-center lg:gap-14 2xl:gap-20">
-          <div className="">
+        <div className="grid grid-cols-1 lg:grid-cols-2  lg:w-full lg:justify-between lg:items-center lg:gap-64 2xl:gap-20">
+          <div className="pl-4 lg:w-[560px]">
             <h2 className="text-xl font-semibold mb-3 md:text-2xl lg:mt-1 lg:text-3xl 2xl:text-6xl 2xl:mb-10">
               Find Millions of job Opportunities Right for You!
             </h2>

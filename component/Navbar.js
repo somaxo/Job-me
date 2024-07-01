@@ -12,7 +12,7 @@ const Navbar = () => {
             <div className="flex space-x-7">
               <div>
                 <Link href="/" className="flex items-center py-4 px-2 ">
-                  <Image src="/jobme.png" width={100} height={100} />
+                  <Image src="/jobme.png" width={100} height={100} alt='logo'/>
                 </Link>
               </div>
             </div>

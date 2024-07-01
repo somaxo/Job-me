@@ -11,7 +11,7 @@ const Footer = () => {
       <div className=" w-11/12 mx-auto container flex flex-row  justify-between lg:justify-items-end items-center ">
         <div className="">
           <Link href="/" className="py-4 px-2 ">
-            <Image src="/jobme.png" width={100} height={100} />
+            <Image src="/jobme.png" width={100} height={100} alt="logo"/>
           </Link>
 
           {/* FOOTER ICONS */}

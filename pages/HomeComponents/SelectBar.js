@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 const SelectBar = () => {
   return (
-    <div className="bg-[rgb(13,202,240,0.5)] h-24 2xl:h-32  ">
-      <div className="container flex justify-center mx-auto mt-3 gap-5 h-10 text-xl xl:gap-9 2xl:gap-16  ">
+    <div className="bg-[rgb(13,202,240,0.5)] h-24 2xl:h-32 lg:w-11/12 mx-auto">
+      <div className="container flex justify-center mx-auto mt-3 lg:gap-5 h-10 text-xl xl:gap-16 2xl:gap-20 ">
         {/* ONE */}
 
         <div className=" mt-7 2xl:mt-8 ">

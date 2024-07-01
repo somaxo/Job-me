@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 const SectionFour = () => {
   return (
-    <div className="section-four-bg grid grid-cols-1 lg:grid-cols-2 lg:w-full lg:justify-between lg:items-center lg:gap-14">
-      <div className=" w-10/12 mx-auto h-64 md:h-56 lg:h-[550px]">
+    <div className="section-four-bg grid grid-cols-1 lg:grid-cols-2 lg:w-full lg:justify-between lg:items-center lg:gap-14 mx-auto lg:h-[400px]">
+      <div className=" w-10/12 mx-auto h-64 md:h-56 lg:pl-6 lg:h-[550px]">
         <h2 className="font-semibold w-10/12 mt-4 mb-2 md:text-2xl md:mt-7 lg:mt-20 lg:text-2xl">
           Get Jobs that match your Qualifications and Skill Set
         </h2>
@@ -23,8 +23,14 @@ const SectionFour = () => {
         </Link>
       </div>
 
-      <div className="hidden lg:block lg:-ml-64 lg:w-[650px] ">
-        <Image src="/man.png" width={700} height={900} alt="pointing man" />
+      <div className="hidden lg:block lg:w-[495px] lg:mb-24">
+        <Image
+          src="/man.png"
+          width={400}
+          height={400}
+          alt="pointing man"
+          className="lg:w-full lg:h-full"
+        />
       </div>
     </div>
   );
