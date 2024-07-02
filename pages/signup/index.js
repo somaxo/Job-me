@@ -116,7 +116,7 @@ const Login = () => {
           />
         </div>
         <p className="2xl:text-2xl lg:text-xl">
-          Don&apost have an account?
+          Don&apos;t have an account?
           <Link
             href="/signup"
             className="btn w-20 text-[#0dcaf0] mx-auto rounded-md p-2 md:w-[100px] lg:text-xl 2xl:text-2xl "

@@ -7,11 +7,11 @@ const Navbar = () => {
   return (
     <>
       <nav className="bg-white sticky top-0 z-50  shadow-lg">
-        <div className="w-11/12 container mx-auto px-4">
+        <div className="w-11/12 container mx-auto">
           <div className="flex justify-between">
             <div className="flex space-x-7">
               <div>
-                <Link href="/" className="flex items-center py-4 px-2 ">
+                <Link href="/" className="flex items-center py-4  ">
                   <Image src="/jobme.png" width={100} height={100} alt='logo'/>
                 </Link>
               </div>
@@ -37,13 +37,13 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="max-sm:hidden md:visible flex justify-center gap-3">
-              <button className="w-16 h-10 my-auto rounded btn-color text-white hover:bg-white hover:text-black">
+            <div className="max-sm:hidden md:visible flex justify-center text-center gap-3">
+              <Link href="/login" className="w-16 h-10 py-2 hidden md:block my-auto rounded btn-color text-white hover:bg-white hover:text-black">
                 Log In
-              </button>
-              <button className="w-16 h-10 my-auto rounded hover-btn hover:text-white">
+              </Link>
+              <Link href="/signup" className="w-16 h-10 py-2 hidden md:block my-auto rounded hover-btn hover:text-white">
                 Sign Up
-              </button>
+              </Link>
             </div>
 
             <div className="md:hidden flex items-center">

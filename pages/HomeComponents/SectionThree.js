@@ -9,7 +9,7 @@ const SectionThree = () => {
         <p className="mt-3 lg:p-3 mb-10 lg:text-xl 2xl:text-3xl md:text-lg">
           Lorem ipsum dolor sit amet consectetur. Augue lacus senectus at amet
           viverra ultrices eget. Tincidunt tristique viverra facilisis arcu non
-          nulla faucibus. Adipiscing blandit nunc lobortis pretium. Tempus
+          nulla. Adipiscing blandit nunc lobortis pretium. Tempus
           viverra vitae nisl imperdiet auctor mattis viverra egestas mattis.
         </p>
       </div>
