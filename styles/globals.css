@@ -54,7 +54,14 @@ background-color: rgba(13, 202, 240, 0.3);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    padding-top: 2.5rem;
+    padding-top: 3rem;
+  }
+}
+
+@media(min-width: 1440px){
+
+  .login-bg{
+    padding-top: 5rem;
   }
 }
 
@@ -68,6 +75,14 @@ background-color: rgba(13, 202, 240, 0.3);
      padding-top: 3.5rem;
      padding-bottom: 3.5rem;
   }
+}
+
+.contactus-bg{
+   background-image: url('/herocontact.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 

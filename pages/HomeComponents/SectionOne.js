@@ -15,7 +15,7 @@ const SectionOne = () => {
             height={450}
           />
           <div className=" mb-10 ml-1">
-            <h2 className="text-xl font-semibold mb-3 md:text-2xl lg:mt-7 lg:text-3xl 2xl:text-6xl 2xl:mb-10">
+            <h2 className="text-xl font-semibold mb-3 md:text-2xl lg:mt-7 lg:text-3xl  2xl:mb-10">
               Find Millions of job Opportunities Right for You!
             </h2>
             <p className="mb-6 md:text-lg lg:text-xl lg:mb-9 2xl:text-3xl">

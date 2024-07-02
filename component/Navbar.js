@@ -6,8 +6,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-      <nav className="bg-white sticky top-0 z-50  shadow-lg">
-        <div className="w-11/12 container mx-auto">
+      <nav className="bg-[#ffffffe7] sticky top-0 z-50  shadow-lg">
+        <div className="w-11/12 lg:py-5 container mx-auto">
           <div className="flex justify-between">
             <div className="flex space-x-7">
               <div>
@@ -16,7 +16,7 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-            <div className="hidden md:flex items-center space-x-1 gap-4">
+            <div className="hidden md:flex items-center font-semibold space-x-1 gap-4">
               <Link
                 href="/"
                 className="py-4 px-2 text-gray-500 text-hover transition duration-300"
