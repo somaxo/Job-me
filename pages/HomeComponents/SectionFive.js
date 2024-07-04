@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const SectionFive = () => {
   return (
-    <div className="container w-11/12 justify-center items-center mx-auto text-center mt-10 mb-10 2xl:mb-14">
+    <div className="container w-11/12 justify-center items-center mx-auto text-center mt-10 mb-10 ">
       <div className="">
         <p className=" text-[#0DCAF0] md:text-xl">Testimonials</p>
         <h2 className="text-lg font-semibold md:text-2xl">
@@ -13,7 +13,7 @@ const SectionFive = () => {
       {/* BOXES */}
       <div className="grid grid-cols-1 lg:grid-cols-3 ">
         {/* ONE */}
-        <div className="bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl 2xl:text-2xl">
+        <div className="bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl ">
           <div className="">
             <Image
               src="/img1.png"
@@ -33,7 +33,7 @@ const SectionFive = () => {
         </div>
 
         {/* TWO */}
-        <div className="hidden lg:block bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl 2xl:text-2xl">
+        <div className="hidden lg:block bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl ">
           <div className="">
             <Image
               src="/img1.png"
@@ -52,7 +52,7 @@ const SectionFive = () => {
           </div>
         </div>
         {/* THREE */}
-        <div className="hidden lg:block bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl 2xl:text-2xl">
+        <div className="hidden lg:block bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl ">
           <div className="">
             <Image
               src="/img1.png"

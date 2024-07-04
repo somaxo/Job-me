@@ -5,7 +5,7 @@ import Link from 'next/link';
 const index = () => {
   return (
     <div className="mt-1 mb-20">
-      <form className=" bg-[#DBF7FD] container lg:w-9/12 mx-auto justify-center items-center  text-gray-500 text-left rounded-lg p-2 py-4">
+      <form className=" bg-[#DBF7FD] container lg:w-8/12 mx-auto justify-center items-center  text-gray-500 text-left rounded-lg p-2 py-4">
         <div className="w-11/12 lg:w-11/12 lg:mt-5 mx-auto">
           {/* BREAKPOINT ONE */}
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:justify-between lg:items-center lg:gap-8 md:mt-4">
@@ -68,14 +68,14 @@ const index = () => {
               placeholder="No file chosen"
               className="container mt-2 bg-white"
             />
-            <div className="font-semibold text-black mt-3 ">
+            <div className="font-semibold text-black mt-2 ">
               <p className="">File type should not be longer than 12MB.</p>
-              <p className="mt-2">Supported file types: doc. docx. pdf.</p>
+              <p className="">Supported file types: doc. docx. pdf.</p>
             </div>
           </div>
-          <div className="checkbox-jobapplication container">
-            <input type="checkbox" id="agree" />
-            <label htmlFor="" className="ml-1 my-4">
+          <div className="container mb-4">
+            <input type="checkbox" id="" />
+            <label htmlFor="" className="ml-1">
               I agree to the <span className='text-[#0dcaf0]'>Terms & Conditions</span>
             </label>
           </div>
@@ -83,7 +83,7 @@ const index = () => {
           {/* SUBMIT BUTTON */}
           <Link
             href="/"
-            className="container justify-center items-center btn w-24 py-2 lg:py-2 lg:mt-8 text-sm my-6 font-light bg-[#0dcaf0] mx-auto rounded-md lg:rounded-lg p-2 text-white lg:text-lg "
+            className="container justify-center items-center btn w-24 font-light bg-[#0dcaf0] mx-auto rounded-md lg:rounded-lg p-2 text-white lg:text-lg "
           >
             Apply Now
           </Link>

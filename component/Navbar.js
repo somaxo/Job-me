@@ -1,18 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [blur, setBlur] = useState(false)
+  useEffect(()=>{
+    const handleScroll = ()=>{
+      const scrollPosition = window.scrollY;
+      const scrollTheshold  = 10;
+      if(scrollPosition > scrollTheshold){
+        setBlur(true)
+      }else{
+        setBlur(false)
+      }
+    }
+  },[])
+
+  const showBlur = blur ? "bg-[#ffffffe7] " : "bg-white"
   return (
     <>
-      <nav className="bg-[#ffffffe7] sticky top-0 z-50  shadow-lg">
+      <nav className={` ${showBlur} sticky top-0 z-50  shadow-lg`}>
         <div className="w-11/12 lg:py-5 container mx-auto">
           <div className="flex justify-between">
             <div className="flex space-x-7">
               <div>
                 <Link href="/" className="flex items-center py-4  ">
-                  <Image src="/jobme.png" width={100} height={100} alt='logo'/>
+                  <Image src="/jobme.png" width={100} height={100} alt="logo" />
                 </Link>
               </div>
             </div>
@@ -38,10 +53,16 @@ const Navbar = () => {
             </div>
 
             <div className="max-sm:hidden md:visible flex justify-center text-center gap-3">
-              <Link href="/login" className="w-16 h-10 py-2 hidden md:block my-auto rounded btn-color text-white hover:bg-white hover:text-black">
+              <Link
+                href="/login"
+                className="w-16 h-10 py-2 hidden md:block my-auto rounded btn-color text-white hover:bg-white hover:text-black"
+              >
                 Log In
               </Link>
-              <Link href="/signup" className="w-16 h-10 py-2 hidden md:block my-auto rounded hover-btn hover:text-white">
+              <Link
+                href="/signup"
+                className="w-16 h-10 py-2 hidden md:block my-auto rounded hover-btn hover:text-white"
+              >
                 Sign Up
               </Link>
             </div>

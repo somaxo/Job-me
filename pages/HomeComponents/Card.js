@@ -47,7 +47,7 @@ const Card = () => {
           </div>
           <Link
             href="/joblisting"
-            className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl 2xl:text-3xl"
+            className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl"
           >
             Apply Now
           </Link>

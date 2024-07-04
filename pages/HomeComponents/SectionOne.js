@@ -15,10 +15,10 @@ const SectionOne = () => {
             height={450}
           />
           <div className=" mb-10 ml-1">
-            <h2 className="text-xl font-semibold mb-3 md:text-2xl lg:mt-7 lg:text-3xl  2xl:mb-10">
+            <h2 className="text-xl font-semibold mb-3 md:text-2xl lg:mt-7 lg:text-3xl ">
               Find Millions of job Opportunities Right for You!
             </h2>
-            <p className="mb-6 md:text-lg lg:text-xl lg:mb-9 2xl:text-3xl">
+            <p className="mb-6 md:text-lg lg:text-xl lg:mb-9">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. In eius
               corrupti atque error, recusandae quidem esse voluptates nihil ea
               dignissimos quae et voluptatibus tempora natus ad possimus amet
@@ -29,18 +29,18 @@ const SectionOne = () => {
 
             <Link
               href="/joblisting"
-              className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl 2xl:text-3xl"
+              className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl"
             >
               Discover More
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2  lg:w-full lg:justify-between lg:items-center lg:gap-64 2xl:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2  lg:w-full lg:justify-between lg:items-center lg:gap-64">
           <div className="ml-1 lg:ml-7 lg:w-[560px]">
-            <h2 className="text-xl font-semibold mb-3 md:text-2xl lg:mt-1 lg:text-3xl 2xl:text-6xl 2xl:mb-10">
+            <h2 className="text-xl font-semibold mb-3 md:text-2xl lg:mt-1 lg:text-3xl">
               Find Millions of job Opportunities Right for You!
             </h2>
-            <p className="mb-6 md:text-lg lg:text-xl lg:mb-9 2xl:text-3xl">
+            <p className="mb-6 md:text-lg lg:text-xl lg:mb-9">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. In eius
               corrupti atque error, recusandae quidem esse voluptates nihil ea
               dignissimos quae et voluptatibus tempora natus ad possimus amet
@@ -50,7 +50,7 @@ const SectionOne = () => {
             </p>
             <Link
               href="/joblisting"
-              className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl 2xl:text-3xl"
+              className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl"
             >
               Discover More
             </Link>

@@ -8,7 +8,7 @@ const Hero = () => {
     <>
       <div className="bg-img">
         <div>
-          <h1 className="text-white text-2xl lg:text-4xl m-auto lg:w-[600px] container text-center pt-6 md:p-6 md:w-7/12 md:h-24 lg:pt-36 lg:pb-28 2xl:text-6xl 2xl:w-5/12 2xl:pt-12 2xl:mb-20 2xl:leading-tight ">
+          <h1 className="text-white text-2xl lg:text-4xl m-auto lg:w-[600px] container text-center pt-6 md:p-6 md:w-7/12 md:h-24 lg:pt-36 lg:pb-28 ">
             SECURE JOBS AS AN AMAZING TALENT!
           </h1>
         </div>
