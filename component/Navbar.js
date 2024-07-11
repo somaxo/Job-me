@@ -1,24 +1,29 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image'
-
+"use client";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Cookies from "js-cookie";
+import logout from "@/utils/logout";
 
 const Navbar = () => {
+  const [userToken, setUserToken] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [blur, setBlur] = useState(false)
-  useEffect(()=>{
-    const handleScroll = ()=>{
+  const [blur, setBlur] = useState(false);
+  useEffect(() => {
+    const token = Cookies.get("token");
+    setUserToken(token);
+    const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const scrollTheshold  = 10;
-      if(scrollPosition > scrollTheshold){
-        setBlur(true)
-      }else{
-        setBlur(false)
+      const scrollTheshold = 10;
+      if (scrollPosition > scrollTheshold) {
+        setBlur(true);
+      } else {
+        setBlur(false);
       }
-    }
-  },[])
+    };
+  }, []);
 
-  const showBlur = blur ? "bg-[#ffffffe7] " : "bg-white"
+  const showBlur = blur ? "bg-[#ffffffe7] " : "bg-white";
   return (
     <>
       <nav className={` ${showBlur} sticky top-0 z-50  shadow-lg`}>
@@ -52,20 +57,24 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="max-sm:hidden md:visible flex justify-center text-center gap-3">
-              <Link
-                href="/login"
-                className="w-16 h-10 py-2 hidden md:block my-auto rounded btn-color text-white hover:bg-white hover:text-black"
-              >
-                Log In
-              </Link>
-              <Link
-                href="/signup"
-                className="w-16 h-10 py-2 hidden md:block my-auto rounded hover-btn hover:text-white"
-              >
-                Sign Up
-              </Link>
-            </div>
+            {userToken ? (
+              <button onClick={logout} >LOGOUT</button>
+            ) : (
+              <div className="max-sm:hidden md:visible flex justify-center text-center gap-3">
+                <Link
+                  href="/login"
+                  className="w-16 h-10 py-2 hidden md:block my-auto rounded btn-color text-white hover:bg-white hover:text-black"
+                >
+                  Log In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="w-16 h-10 py-2 hidden md:block my-auto rounded hover-btn hover:text-white"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
 
             <div className="md:hidden flex items-center">
               <button
@@ -124,6 +133,6 @@ const Navbar = () => {
       </nav>
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

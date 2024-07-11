@@ -66,7 +66,7 @@ const index = () => {
             <input
               type="file"
               placeholder="No file chosen"
-              className="container mt-2 bg-white"
+              className="container mt-2 bg-white lg:w-7/12 "
             />
             <div className="font-semibold text-black mt-2 ">
               <p className="">File type should not be longer than 12MB.</p>
