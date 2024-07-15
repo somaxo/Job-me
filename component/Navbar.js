@@ -9,6 +9,8 @@ const Navbar = () => {
   const [userToken, setUserToken] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [blur, setBlur] = useState(false);
+
+
   useEffect(() => {
     const token = Cookies.get("token");
     setUserToken(token);
@@ -23,6 +25,9 @@ const Navbar = () => {
     };
   }, []);
 
+  const showLink = userToken ? "block" : "hidden"
+    const hideLink = userToken ? "hidden" : "block";
+
   const showBlur = blur ? "bg-[#ffffffe7] " : "bg-white";
   return (
     <>
@@ -36,18 +41,25 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
+
             <div className="hidden md:flex items-center font-semibold space-x-1 gap-4">
               <Link
                 href="/"
-                className="py-4 px-2 text-gray-500 text-hover transition duration-300"
+                className={` ${hideLink} py-4 px-2 text-gray-500 text-hover transition duration-300`}
               >
                 Home
               </Link>
               <Link
-                href="/about"
+                href="/joblisting"
                 className="py-4 px-2 text-gray-500 text-hover transition duration-300"
               >
                 Job Listings
+              </Link>
+              <Link
+                href="/appliedjobs"
+                className={`${showLink} py-4 px-2 text-gray-500 text-hover transition duration-300`}
+              >
+                Applied Jobs
               </Link>
               <Link
                 href="/contact"
@@ -58,7 +70,35 @@ const Navbar = () => {
             </div>
 
             {userToken ? (
-              <button onClick={logout} >LOGOUT</button>
+              <button className="hidden md:block">
+                <div className="grid md:grid-cols-3 justify-center mx-auto border-[1px] border-black rounded-2xl w-24 p-2">
+                  <Image
+                    src="/profile.png"
+                    alt="profile"
+                    className="mx-auto"
+                    width={20}
+                    height={20}
+                  />
+
+                  <Image
+                    src="/line.png"
+                    alt="profile"
+                    className="mx-auto bg-black"
+                    width={1}
+                    height={1}
+                  />
+
+                  {/* <div className=" border-2 border-gray-700 w-1 ml-2"></div> */}
+                  <Image
+                    onClick={logout}
+                    src="/logout-icon.png"
+                    alt="profile"
+                    className="mx-auto"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+              </button>
             ) : (
               <div className="max-sm:hidden md:visible flex justify-center text-center gap-3">
                 <Link
