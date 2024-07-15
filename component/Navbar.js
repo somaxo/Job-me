@@ -1,9 +1,11 @@
-"use client";
+// "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import logout from "@/utils/logout";
+import ProfileModal from "./ProfileModal";
+// import ProfileModal
 
 const Navbar = () => {
   const [userToken, setUserToken] = useState(null);
@@ -41,7 +43,7 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-
+{/* <ProfileModal/> */}
             <div className="hidden md:flex items-center font-semibold space-x-1 gap-4">
               <Link
                 href="/"
@@ -68,7 +70,7 @@ const Navbar = () => {
                 Contact Us
               </Link>
             </div>
-
+            <ProfileModal/>
             {userToken ? (
               <button className="hidden md:block">
                 <div className="grid md:grid-cols-3 justify-center mx-auto border-[1px] border-black rounded-2xl w-24 p-2">
