@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Cookies from "js-cookie";
-import logout from "@/utils/logout";
-import ProfileModal from "./ProfileModal";
-// import ProfileModal
+import LoggedNav from "./LoggedNav";
+
 
 const Navbar = () => {
   const [userToken, setUserToken] = useState(null);
@@ -43,7 +42,7 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-{/* <ProfileModal/> */}
+
             <div className="hidden md:flex items-center font-semibold space-x-1 gap-4">
               <Link
                 href="/"
@@ -70,37 +69,7 @@ const Navbar = () => {
                 Contact Us
               </Link>
             </div>
-            <ProfileModal/>
-            {userToken ? (
-              <button className="hidden md:block">
-                <div className="grid md:grid-cols-3 justify-center mx-auto border-[1px] border-black rounded-2xl w-24 p-2">
-                  <Image
-                    src="/profile.png"
-                    alt="profile"
-                    className="mx-auto"
-                    width={20}
-                    height={20}
-                  />
-
-                  <Image
-                    src="/line.png"
-                    alt="profile"
-                    className="mx-auto bg-black"
-                    width={1}
-                    height={1}
-                  />
-
-                  {/* <div className=" border-2 border-gray-700 w-1 ml-2"></div> */}
-                  <Image
-                    onClick={logout}
-                    src="/logout-icon.png"
-                    alt="profile"
-                    className="mx-auto"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-              </button>
+            {userToken ? (  <LoggedNav/>
             ) : (
               <div className="max-sm:hidden md:visible flex justify-center text-center gap-3">
                 <Link

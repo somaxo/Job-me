@@ -5,11 +5,11 @@ import {Dialog, DialogBackdrop, DialogPanel, DialogTitle,
 } from "@headlessui/react";
 
 
-export default function ProfileModal() {
-  const [open, setOpen] = useState(true);
+export default function ProfileModal({show, setShow}) {
+  // const [open, setOpen] = useState(false);
 
   return (
-    <Dialog open={open} onClose={setOpen} className="relative z-10">
+    <Dialog open={show} onClose={setShow} className="relative z-10">
       <DialogBackdrop
         transition
         className=" data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
