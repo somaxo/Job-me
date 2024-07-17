@@ -5,7 +5,7 @@ import Image from 'next/image';
 const SmallCard = () => {
   return (
     <div>
-      <div className="container mx-auto justify-center w-11/12 h-[400px]">
+      <div className="container mx-auto justify-center w-11/12 h-[400px] my-7">
         <div className="border rounded-t-lg w-72 h-80 shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5 mx-auto md:w-80">
           <h3 className="font-semibold mb-2 text-xl md:text-[22px]">
             Digital Marketer

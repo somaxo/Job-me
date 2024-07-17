@@ -2,9 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
 
+
 const LargeCard = () => {
   return (
     <div className="container grid lg:grid-cols-4 justify-evenly items-center mx-auto w-11/12 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mt-24 mb-12 p-7 lg:gap-36 ">
+     
       <div className="flex justify-start items-center gap-3 w-60 ">
         <Image
           src="/google.png"
@@ -40,7 +42,7 @@ const LargeCard = () => {
       {/* BUTTON DIV */}
 
       <Link
-        href="/joblisting"
+        href="/joblisting/details-1"
         className=" btn bg-[#0dcaf0] mx-auto rounded-xl px-3 py-3 text-white text-lg text-center "
       >
         Apply Now
