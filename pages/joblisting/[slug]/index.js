@@ -6,13 +6,13 @@ const JobDetailPage = () => {
     <>
       <div className="">
         <div className="">
-          <div className="">
+          <div className="bg-[#DBF7FD]">
             <Image
               src="/google.png"
               width={50}
               height={50}
               alt="google icon"
-              className=""
+              className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md p-2 bg-white"
             />
             <h4>Digital Marketer</h4>
             <p>
@@ -25,8 +25,8 @@ const JobDetailPage = () => {
               <p className="card-detail">
                 <Image
                   src="/profile.png"
-                  width={50}
-                  height={50}
+                  width={15}
+                  height={20}
                   alt="person"
                   className=""
                 />
@@ -36,8 +36,8 @@ const JobDetailPage = () => {
               <p>
                 <Image
                   src="/black-location.png"
-                  width={50}
-                  height={50}
+                  width={20}
+                  height={20}
                   alt="location pin"
                   className=""
                 />
@@ -47,8 +47,8 @@ const JobDetailPage = () => {
               <p>
                 <Image
                   src="/black-clock.png"
-                  width={50}
-                  height={50}
+                  width={20}
+                  height={20}
                   alt="clock"
                   className=""
                 />
@@ -58,8 +58,8 @@ const JobDetailPage = () => {
               <p>
                 <Image
                   src="/suit-case.png"
-                  width={50}
-                  height={50}
+                  width={20}
+                  height={20}
                   alt="suitcase"
                   className=""
                 />
@@ -69,8 +69,8 @@ const JobDetailPage = () => {
               <p>
                 <Image
                   src="/dollar.png"
-                  width={50}
-                  height={50}
+                  width={20}
+                  height={20}
                   alt="dollar"
                   className=""
                 />{" "}
@@ -81,7 +81,13 @@ const JobDetailPage = () => {
           </div>
           {/* MAP */}
 
-          <Image src="/map.png" width={50} height={50} alt="map" className="" />
+          <Image
+            src="/map.png"
+            width={50}
+            height={50}
+            alt="map"
+            className="w-72 hidden md:block"
+          />
         </div>
 
         {/* BULLET POINT CONTENT */}
@@ -153,7 +159,10 @@ const JobDetailPage = () => {
             </p>
 
             <div>
-              <Link className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl">
+              <Link
+                href="/joblisting"
+                className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl"
+              >
                 Apply Now
               </Link>
             </div>

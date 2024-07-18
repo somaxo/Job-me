@@ -27,7 +27,7 @@ const Appliedjobs = () => {
               <p>Google </p>
               <p>United Kingdom </p>
               <p>
-                <span className="font-semibold">Date of Application:</span>{" "}
+                <span className="font-semibold">Date of Application:</span>
                 February 20, 2024
               </p>
             </div>
@@ -48,7 +48,7 @@ const Appliedjobs = () => {
             </div>
           </div>
 
-          <hr className="border-gray-400 mb-6 mt-4" />
+          <hr className="border-gray-400 mb-6 mt-4 md:mt-0" />
         </div>
       </div>
     );
