@@ -1,8 +1,10 @@
-import React from 'react'
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+
 
 const SectionOne = () => {
+
   return (
     <div className="section-one-bg-color ">
       <div className="container w-11/12  h-[770px] mx-auto pt-5 md:h-[580px] lg:h-full">
@@ -29,7 +31,7 @@ const SectionOne = () => {
 
             <Link
               href="/joblisting"
-              className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl"
+              className="btn w-20 bg-[#0dcaf0] hover:bg-cyan-400 mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl"
             >
               Discover More
             </Link>
@@ -50,7 +52,7 @@ const SectionOne = () => {
             </p>
             <Link
               href="/joblisting"
-              className="btn w-20 bg-[#0dcaf0] mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl"
+              className="btn w-20 bg-[#0dcaf0] hover:bg-cyan-400 mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl"
             >
               Discover More
             </Link>
@@ -66,6 +68,6 @@ const SectionOne = () => {
       </div>
     </div>
   );
-}
+};
 
-export default SectionOne
+export default SectionOne;

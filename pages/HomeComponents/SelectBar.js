@@ -9,7 +9,11 @@ const SelectBar = () => {
 
         <div className="container flex justify-center mx-auto gap-4 w-10/12">
           <div className=" p-2  bg-white rounded-md text-center md:text-start w-6/12 ">
-            <select name="" id="" className="bg-transparent lg:text-[20px] w-full">
+            <select
+              name=""
+              id=""
+              className="bg-transparent lg:text-[20px] w-full"
+            >
               <option value="" id="">
                 Select job Type
               </option>
@@ -17,7 +21,11 @@ const SelectBar = () => {
           </div>
           {/* TWO */}
           <div className=" p-2 bg-white rounded-md text-center md:text-start w-6/12 ">
-            <select name="" id="" className="bg-transparent lg:text-[20px] w-full">
+            <select
+              name=""
+              id=""
+              className="bg-transparent lg:text-[20px] w-full"
+            >
               <option value="" id="">
                 Select job Type
               </option>
@@ -28,7 +36,11 @@ const SelectBar = () => {
         {/* THREE */}
         <div className="container flex justify-center mx-auto gap-4 my-3 w-10/12">
           <div className=" p-2 bg-white rounded-md text-center md:text-start w-6/12 ">
-            <select name="" id="" className="bg-transparent lg:text-[20px] w-full">
+            <select
+              name=""
+              id=""
+              className="bg-transparent lg:text-[20px] w-full"
+            >
               <option value="" id="">
                 Select job Type
               </option>
@@ -36,7 +48,11 @@ const SelectBar = () => {
           </div>
           {/* FOUR */}
           <div className=" p-2 bg-white rounded-md text-center md:text-start w-6/12 ">
-            <select name="" id="" className="bg-transparent lg:text-[20px] w-full">
+            <select
+              name=""
+              id=""
+              className="bg-transparent lg:text-[20px] w-full"
+            >
               <option value="" id="">
                 Select job Type
               </option>
@@ -45,14 +61,14 @@ const SelectBar = () => {
         </div>
         <Link
           href="/joblisting"
-          className="hidden lg:block btn bg-[#0dcaf0] rounded-md p-2 text-white text-[20px] w-3/12 text-center"
+          className="hidden lg:block btn bg-[#0dcaf0] hover:bg-cyan-400 rounded-md p-2 text-white text-[20px] w-3/12 text-center"
         >
           Find Jobs
         </Link>
       </div>
       <Link
         href="/joblisting"
-        className=" lg:hidden btn flex justify-center mx-auto bg-[#0dcaf0] rounded-md p-2 text-white text-center lg:text-[20px] w-10/12 "
+        className=" lg:hidden btn flex justify-center mx-auto bg-[#0dcaf0] hover:bg-cyan-400 rounded-md p-2 text-white text-center lg:text-[20px] w-10/12 "
       >
         Find Jobs
       </Link>

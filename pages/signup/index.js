@@ -5,15 +5,24 @@ import { FaRegEye } from "react-icons/fa";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import Loading from "@/component/loader/Loading";
+import { useRouter } from "next/router";
 
 const Login = () => {
    const {register, handleSubmit, formState:{errors}, reset, watch} = useForm()
 
+   const [loading, setLoading] = useState(false);
+
 const password = watch ("password")
 
-const [formError, setFormError ] = useState("")
+// const [formError, setFormError ] = useState("")
+ const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+
+   const router = useRouter();
 
 const onSubmit = async (data) => {
+   setLoading(true);
   console.log(data);
   try {
     const formData = {
@@ -27,13 +36,16 @@ const onSubmit = async (data) => {
       headers:{"Content-Type": "application/json"},
       body:JSON.stringify(formData)
     })
+ 
     console.log(res);
 
 const responseData = await res.json();
 console.log(responseData);
 
     if(res.ok){
+      setLoading(false);
       reset()
+         router.push("/login");
       // you can add additional logic like toast,redirect etc here
     }else {
       const responseData = await res.json()
@@ -44,6 +56,18 @@ console.log(responseData);
     console.log(error, "Something went wrong");
   }
 }
+// first eye
+ const toggleEye = () => {
+   setShow(!show);
+ };
+ const toggleShow = show ? "text" : "password";
+
+// second eye
+const toggleEye2 = () => {
+  setShow2(!show2);
+};
+const toggleShow2 = show2 ? "text" : "password";
+
 
   return (
     <div className="signup-bg py-7">
@@ -132,12 +156,12 @@ console.log(responseData);
                 },
               })}
               className="w-full xl:text-xl m-auto px-2 py-3 lg:py-2 mb-3 text-black bg-white border-[1.4px] border-gray-400 rounded-md lg:rounded-[14px] placeholder:text-gray-400 outline-gray-500"
-              type="password"
-              placeholder="Password"
+              type={`${toggleShow}`}
+              placeholder="********"
               id=""
             />
             <button className="text-gray-400 absolute right-3 translate-y-[18px] lg:translate-y-[15px]">
-              <FaRegEye />
+              <FaRegEye onClick={toggleEye} />
             </button>
           </div>
           {errors.password && (
@@ -153,12 +177,12 @@ console.log(responseData);
                   value === password || "The passwords do not match",
               })}
               className="w-full xl:text-xl m-auto px-2 py-3 lg:py-2 mb-1 text-black bg-white border-[1.4px] border-gray-400 rounded-md lg:rounded-[14px] placeholder:text-gray-400 outline-gray-500"
-              type="password"
+              type={`${toggleShow2}`}
               placeholder="Confirm password"
               id=""
             />
             <button className="text-gray-400 absolute right-3 translate-y-[18px] lg:translate-y-[15px]">
-              <FaRegEye />
+              <FaRegEye onClick={toggleEye2} />
             </button>
           </div>
           {errors.confirmPassword && (
@@ -172,7 +196,7 @@ console.log(responseData);
           type="submit"
           className="container justify-center items-center btn flex w-full lg:w-8/12 py-1 lg:py-2 text-sm mb-4 font-light bg-[#0dcaf0] mx-auto rounded-md mt-3 lg:rounded-[14px] p-2 text-white lg:text-lg "
         >
-          Sign Up
+          {loading ? <Loading /> : <span>Sign Up</span>}
         </button>
 
         <p className="my-1 text-sm xl:text-base ">Or continue with</p>

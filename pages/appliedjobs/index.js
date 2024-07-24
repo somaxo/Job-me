@@ -35,13 +35,13 @@ const Appliedjobs = () => {
               <Link
                 onClick={showUserStatus}
                 href=""
-                className="text-[#0dcaf0] border border-gray-400 rounded-lg p-1 px-2 lg:p-2"
+                className="text-[#0dcaf0] hover:bg-cyan-400 hover:text-white border border-gray-400 rounded-lg p-1 px-2 lg:p-2"
               >
                 Update Status
               </Link>
               <Link
                 href="/joblisting"
-                className="text-white bg-green-700 rounded-lg p-1 px-2 lg:p-2"
+                className="text-white bg-green-700 hover:bg-green-600 rounded-lg p-1 px-2 lg:p-2"
               >
                 Applied
               </Link>

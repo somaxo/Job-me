@@ -21,10 +21,10 @@ export default function UpdateStatusModal({show, setShow}) {
       />
 
       <div className="fixed inset-0 z-10 overflow-y-auto">
-        <div className="flex relative items-end justify-center text-center sm:items-center sm:p-0">
+        <div className="flex min-h-full mt-10 items-center justify-center text-center sm:items-center sm:p-0">
           <DialogPanel
             transition
-            className="absolute right-5.5 md:right-14 top-20 md:top-40  transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 lg:w-96 lg:p-2 "
+            className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-lg transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg  lg:w-full data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
           >
             <div className=" bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
               <div className=" sm:flex sm:items-start w-full">

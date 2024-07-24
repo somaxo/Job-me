@@ -1,54 +1,100 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import PageLoading from "@/component/pageloader/PageLoading";
 
 
 const LargeCard = () => {
+  const [loading, setLoading] = useState(true);
+  const [jobs, setJobs] = useState([]);
+
+  const getJobs = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("http://localhost:3000//api/jobs/jobupload", {
+        method: "GET",
+      });
+
+      const resData = await res.json();
+      console.log(resData);
+      console.log(resData.data);
+      if (res.ok) {
+        setLoading(false);
+        setJobs(resData.data);
+      }
+    } catch (error) {
+      console.error("something went wrong ");
+    }
+  };
+
+  useEffect(() => {
+    getJobs();
+  }, []);
+
+  // if (loading) {
+  //   return (
+  //     <div>
+  //       <PageLoading/>
+  //     </div>
+  //   );
+  // }
   return (
-    <div className="container grid lg:grid-cols-4 justify-evenly items-center mx-auto w-11/12 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mt-24 mb-12 p-7 lg:gap-36 ">
-     
-      <div className="flex justify-start items-center gap-3 w-60 ">
-        <Image
-          src="/google.png"
-          width={65}
-          height={65}
-          alt="google icon"
-          className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md p-2"
-        />
+    <div>
+      {jobs.map((job) => (
+        <div
+          key={job.id}
+          className="container gap-16 grid md:grid-cols-4 justify-between items-center mx-auto w-11/12 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mt-5 p-5  "
+        >
+          <div className="flex justify-start items-center gap-3 w-44 ">
+            <Image
+              src={job.logoUrl}
+              width={65}
+              height={65}
+              alt="google icon"
+              className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md p-2"
+            />
 
-        <div className="text-lg">
-          <h4 className="font-semibold">Digital Marketer</h4>
-          <p>Google</p>
+            <div className="text-lg">
+              <h4 className="font-semibold">{job.title}</h4>
+              {job.company}
+            </div>
+          </div>
+          {/* FULL TIME DIV */}
+          <div className="flex flex-col justify-start items-start gap-1 w-44">
+            <span className="rounded-md bg-[#0dcaf024] text-[#0dcaf0] px-3 py-1.5">
+              {job.employmentType}
+            </span>
+            <p className="flex justify-start items-center gap-1 text-gray-600 ">
+              <Image src="/time.png" width={20} height={20} alt="clock" />
+              Posted 24 hours ago
+            </p>
+          </div>
+          {/* LOCATION DIV */}
+          <div className="flex flex-col justify-start items-start gap-4 w-44">
+            <p className="flex justify-start items-center gap-1 text-gray-600">
+              <Image
+                src="/location.png"
+                width={20}
+                height={20}
+                alt="location"
+              />
+              {job.location}
+            </p>
+            <p className="font-medium ml-1">{job.salary}</p>
+          </div>
+          {/* BUTTON DIV */}
+
+          <Link
+            href="/joblisting/details-1"
+            className=" btn bg-[#0dcaf0] hover:bg-cyan-400 mx-auto rounded-xl px-3 py-3 text-white text-lg text-center "
+          >
+            Apply Now
+          </Link>
         </div>
-      </div>
-      {/* FULL TIME DIV */}
-      <div className="flex flex-col justify-start items-start gap-1 w-60">
-        <span className="rounded-md bg-[#0dcaf024] text-[#0dcaf0] px-3 py-1.5">
-          Full Time
-        </span>
-        <p className="flex justify-start items-center gap-1 text-gray-600 ">
-          <Image src="/time.png" width={20} height={20} alt="clock" />
-          Posted 24 hours ago
-        </p>
-      </div>
-      {/* LOCATION DIV */}
-      <div className="flex flex-col justify-start items-start gap-4 w-60">
-        <p className="flex justify-start items-center gap-1 text-gray-600">
-          <Image src="/location.png" width={20} height={20} alt="location" />
-          United Kingdom
-        </p>
-        <p className="font-medium ml-1">$ 30k - 35k</p>
-      </div>
-      {/* BUTTON DIV */}
-
-      <Link
-        href="/joblisting/details-1"
-        className=" btn bg-[#0dcaf0] mx-auto rounded-xl px-3 py-3 text-white text-lg text-center "
-      >
-        Apply Now
-      </Link>
+      ))}
     </div>
   );
-}
+};
 
-export default LargeCard
+export default LargeCard;

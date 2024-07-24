@@ -177,7 +177,7 @@ const JobDetailPage = () => {
 
           <div className="my-6">
             <Link
-              href="/joblisting"
+              href="/jobapplication"
               className="btn bg-[#0dcaf0] rounded-lg text-white p-2 my-5"
             >
               Apply Now

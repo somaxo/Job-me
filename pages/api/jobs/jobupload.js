@@ -1,15 +1,18 @@
 // pages/api/jobs/index.js
 
 import connectMongodb from '@/lib/mongodb';
-import Jobs from '@/component/modals/Jobs';
+import Jobs from '@/models/Jobs';
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
+
+         console.log("Request Method:", req.method);
+         console.log("Request Body:", req.body);
         // Create a new job
-        const { title, company, description, employmentType, location, experience, salary, duties, skills, latitude, longitude } = req.body;
+        const { title, company, description, employmentType, location, logoUrl, experience, salary, duties, skills, latitude, longitude } = req.body;
 
         // Add validation
-        if (!title || !company || !description || !employmentType || !location) {
+        if (!title || !company || !description || !employmentType || !location || !logoUrl) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
 
@@ -26,6 +29,7 @@ export default async function handler(req, res) {
                 description,
                 employmentType,
                 location,
+                logoUrl,
                 experience,
                 salary,
                 duties,
@@ -52,7 +56,7 @@ export default async function handler(req, res) {
 
             console.log('Retrieving jobs...');
             const jobs = await Jobs.find({});
-            console.log(`Retrieved ${Jobs.length} jobs`);
+            console.log(`Retrieved ${jobs.length} jobs`);
 
             res.status(200).json({ message: 'Jobs retrieved successfully', data: jobs });
         } catch (error) {

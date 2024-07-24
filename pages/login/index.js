@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import Loading from "@/component/loader/Loading";
 
 const Login = () => {
   const {
@@ -16,10 +17,13 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+const [loading, setLoading] = useState(false);
+
   const router = useRouter()
   // const [formError, setFormError] = useState("");
-
+ const [show, setShow] = useState(false);
   const onSubmit = async (data) => {
+    setLoading(true);
     try {
       console.log(data);
       const res = await fetch('api/auth/signin',{
@@ -31,6 +35,7 @@ const Login = () => {
       })
       const responseData = await res.json();
       if(res.ok){
+          setLoading(false);
         console.log('login successful:', responseData);
         // localStorage.setItem('token', responseData.token)
         Cookies.set("token", responseData.token, {
@@ -44,10 +49,16 @@ const Login = () => {
         console.error('login failed:', responseData);
       }
     } catch (error) {
+    
       console.error("Somthing went wrong:", error);
     }
     
   };
+  const toggleEye = () => {
+  setShow(!show);
+  }
+  const toggleShow = show ? "text" : "password";
+
 
   return (
     <div className="login-bg">
@@ -100,12 +111,12 @@ const Login = () => {
                 required: " Password is required",
               })}
               className=" w-full  xl:text-xl m-auto px-4 py-3 lg:py-2 my-2 text-black bg-white border-[1.4px] border-gray-400 rounded-md lg:rounded-[14px] placeholder:text-gray-400 outline-gray-500"
-              type="password"
+              type={`${toggleShow}`}
               placeholder="Password"
               id="password"
             />
             <button className="text-gray-400 absolute right-3 translate-y-7 lg:translate-y-6">
-              <FaRegEye />
+              <FaRegEye onClick={toggleEye} />
             </button>
           </div>
           {errors.password && (
@@ -130,7 +141,7 @@ const Login = () => {
           type="submit"
           className="container justify-center items-center btn flex w-full lg:w-9/12 py-1 lg:py-2 text-sm mb-4 font-light bg-[#0dcaf0] mx-auto rounded-md lg:rounded-[14px] p-2 text-white lg:text-lg "
         >
-          Log In
+          {loading ? <Loading /> : <span>Log In</span>}
         </button>
 
         <p className="my-1 text-sm xl:text-base ">Or continue with</p>

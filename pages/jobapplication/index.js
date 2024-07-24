@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
+import Loading from '@/component/loader/Loading';
 
 
 const index = () => {
@@ -82,10 +83,10 @@ const index = () => {
 
           {/* SUBMIT BUTTON */}
           <Link
-            href="/"
+            href="/joblisting"
             className="container justify-center items-center btn w-24 font-light bg-[#0dcaf0] mx-auto rounded-md lg:rounded-lg p-2 text-white lg:text-lg "
           >
-            Apply Now
+            Apply Nowo
           </Link>
         </div>
       </form>
