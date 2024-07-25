@@ -12,7 +12,7 @@ const SmallCard = () => {
   const getJobs = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000//api/jobs/jobupload", {
+      const res = await fetch("/api/jobs/jobupload", {
         method: "GET",
       });
 
