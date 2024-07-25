@@ -24,7 +24,8 @@ const LargeCard = () => {
         setJobs(resData.data);
       }
     } catch (error) {
-      console.error("something went wrong ");
+      setLoading(false)
+      console.error("something went wrong ", error);
     }
   };
 
