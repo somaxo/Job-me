@@ -15,6 +15,10 @@ const LargeCard = () => {
       const res = await fetch("/api/jobs/jobupload", {
         method: "GET",
       });
+      console.log(res);
+      if(res.status !== 200){
+        setLoading(false)
+      }
 
       const resData = await res.json();
       console.log(resData);
