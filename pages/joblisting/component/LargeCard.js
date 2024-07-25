@@ -41,7 +41,7 @@ const LargeCard = () => {
   // }
   return (
     <div>
-      {jobs.map((job) => (
+      {jobs && jobs.map((job) => (
         <div
           key={job.id}
           className="container gap-16 grid md:grid-cols-4 justify-between items-center mx-auto w-11/12 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mt-5 p-5  "
@@ -86,7 +86,7 @@ const LargeCard = () => {
           {/* BUTTON DIV */}
 
           <Link
-            href="/joblisting/details-1"
+            href={`/joblisting/${job._id}`}
             className=" btn bg-[#0dcaf0] hover:bg-cyan-400 mx-auto rounded-xl px-3 py-3 text-white text-lg text-center "
           >
             Apply Now

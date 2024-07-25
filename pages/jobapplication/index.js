@@ -86,7 +86,7 @@ const index = () => {
             href="/joblisting"
             className="container justify-center items-center btn w-24 font-light bg-[#0dcaf0] mx-auto rounded-md lg:rounded-lg p-2 text-white lg:text-lg "
           >
-            Apply Nowo
+            Apply Now
           </Link>
         </div>
       </form>

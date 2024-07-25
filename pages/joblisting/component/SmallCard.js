@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 
-const SmallCard = ({ job }) => {
+const SmallCard = () => {
   const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
 
@@ -35,7 +35,8 @@ const SmallCard = ({ job }) => {
 
   return (
     <div>
-      {jobs.map((job) => (
+      
+      {jobs && jobs.map((job) => (
         <div
           key={job.id}
           className="container mx-auto justify-center w-11/12 h-[400px] my-7"
