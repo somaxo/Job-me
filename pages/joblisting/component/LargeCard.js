@@ -12,7 +12,7 @@ const LargeCard = () => {
   const getJobs = async () => {
     setLoading(true);
     try {
-      const res = await fetch("https://job-me.vercel.app/api/jobs/jobupload", {
+      const res = await fetch("/api/jobs/jobupload", {
         method: "GET",
       });
 
