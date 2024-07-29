@@ -8,6 +8,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Loading from "@/component/loader/Loading";
+import { useUser } from "@/context/UserContext";
 
 const Login = () => {
   const {
@@ -16,10 +17,10 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
-
-const [loading, setLoading] = useState(false);
-
+  
+  const [loading, setLoading] = useState(false);
   const router = useRouter()
+
   // const [formError, setFormError] = useState("");
  const [show, setShow] = useState(false);
   const onSubmit = async (data) => {
@@ -34,9 +35,12 @@ const [loading, setLoading] = useState(false);
         body: JSON.stringify(data),
       })
       const responseData = await res.json();
+
       if(res.ok){
           setLoading(false);
         console.log('login successful:', responseData);
+        console.log(responseData.user.id);
+       Cookies.set("userId", responseData.user.id);
         // localStorage.setItem('token', responseData.token)
         Cookies.set("token", responseData.token, {
           expires:1,

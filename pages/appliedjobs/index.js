@@ -1,14 +1,33 @@
 import Link from "next/link";
 import UpdateStatusModal from "@/component/modals/UpdateStatusModal";
 import { useState } from "react";
+import useFetch from "@/hooks/useFetch";
+import PageLoading from "@/component/pageloader/PageLoading";
+import Cookies from "js-cookie";
 
 const Appliedjobs = () => {
+  const userId = Cookies.get("userId")
+  console.log(userId);
+  const { data, error, loading } = useFetch(
+    `/api/jobs/appliedjobs?userId=${userId}`
+  );
   const [showStatus, setShowStatus] = useState(false);
 
   const showUserStatus = () => {
     setShowStatus(true);
   };
 
+   if (loading) {
+     return <PageLoading />;
+   }
+
+   if (error) {
+     return (
+       <div>
+         <p>Error fetching jobs</p>
+       </div>
+     );
+   }
 
     return (
       <div className="">

@@ -55,10 +55,19 @@ export default async function handler(req, res) {
             console.log('MongoDB connected successfully');
 
             console.log('Retrieving jobs...');
-            const jobs = await Jobs.find({});
-            console.log(`Retrieved ${jobs.length} jobs`);
+            const allJobs = await Jobs.find({});
+            console.log(`Retrieved ${allJobs.length} jobs`);
+// Get recent Jobs(latest 6)
+const recentJobs = await Jobs.find({})
+.sort({ createdAt: -1}) // sort by creation date, newest first
+.limit(6)
+console.log(`Retrieved ${recentJobs.length} recent jobs`);
 
-            res.status(200).json({ message: 'Jobs retrieved successfully', data: jobs });
+
+            res.status(200).json({ message: 'Jobs retrieved successfully', data: {
+                allJobs: allJobs,
+                recentJobs: recentJobs
+            } });
         } catch (error) {
             console.error('Error details:', error);
             res.status(500).json({ 

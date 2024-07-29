@@ -37,6 +37,10 @@ const JobSchema = new Schema({
   skills: { type: [String]  },
   latitude: { type: Number },
   longitude: { type: Number },
+  createdAt:{
+    type: Date,
+    default: Date.now
+  }
 },{timestamp: true});
 
 export default mongoose.models.Job || mongoose.model("Job", JobSchema);

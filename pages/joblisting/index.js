@@ -7,41 +7,6 @@ import LargeCard from "./component/LargeCard";
 import SmallCard from "./component/SmallCard";
 import { useState, useEffect } from "react";
 import PageLoading from "@/component/pageloader/PageLoading";
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:3000//api/jobs/jobuploads");
-//   const data = await res.json();
-//   console.log(data);
-
-//   return {
-//     props: {
-//       jobs: data.data
-//     },
-//   };
-// }
-
-// useEffect((data) => {
-//   const fetchData = async () => {
-//     const [data, setData] = useState(null);
-//     try {
-//       const res = await fetch("http://localhost:3000//api/jobs/jobuploads", {
-//         method: "GET",
-//       });
-
-//       if (!res.ok) {
-//         throw new Error("Network response was not ok");
-//       }
-//       console.log(data);
-//       const result = await res.json();
-//       setData(result);
-//     } catch (error) {
-//       setError(error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   fetchData();
-// }, []);
 
 
 

@@ -1,18 +1,25 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import Card from "@/pages/HomeComponents/Card";
 import SuccessModal from "@/component/modals/SuccessModal";
 import {useState, useEffect} from 'react'
 import { useRouter } from "next/router";
+import { formatDistanceToNow } from "date-fns";
+import useFetch from "@/hooks/useFetch";
+import Cookies from "js-cookie";
 
 const JobDetailPage = () => {
   const [job, setJob] = useState(null)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   const router = useRouter()
   const {id} = router.query
-
+const updateJobId =()=>{
+  Cookies.set("jobId", id)
+}
 const fetchJob = async () => {
   try {
     const response = await fetch(`/api/jobs/${id}`, {
@@ -42,6 +49,10 @@ if (id) {
   if (loading) return <div>Loading</div>
    if (error) return <div>{error}</div>;
     if (!job) return <div>Job Not found</div>;
+
+    const postedTime = job?.createdAt ? formatDistanceToNow(new Date(job.createdAt), {
+      addSuffix: true,
+    }) : " "
 
   return (
     <>
@@ -96,7 +107,7 @@ if (id) {
                 />
                 Date Posted:
                 <span className="text-[#0dcaf0] font-normal">
-                  13th April, 2024.
+                  {postedTime}
                 </span>
               </p>
               <p className="flex justify-start items-center gap-1 font-semibold my-2 lg:my-4">
@@ -171,6 +182,7 @@ if (id) {
 
           <div className="my-6">
             <Link
+            onClick={updateJobId}
               href="/jobapplication"
               className="btn bg-[#0dcaf0] rounded-lg text-white p-2 my-5"
             >
