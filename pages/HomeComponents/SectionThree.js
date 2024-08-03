@@ -13,7 +13,7 @@ const SectionThree = () => {
           viverra vitae nisl imperdiet auctor mattis viverra egestas mattis.
         </p>
       </div>
-      <div>
+      <div className="container justify-center items-center mx-auto w-11/12">
         <Card />
       </div>
     </div>

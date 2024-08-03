@@ -1,76 +1,107 @@
-import Link from "next/link";
-import UpdateStatusModal from "@/component/modals/UpdateStatusModal";
-import { useState } from "react";
-import useFetch from "@/hooks/useFetch";
-import PageLoading from "@/component/pageloader/PageLoading";
+import { useState, useEffect } from "react";
+import { fetchAppliedJobs } from "@/services/allJobsApplications";
 import Cookies from "js-cookie";
+import { format } from "date-fns";
+import UpdateStatusModal from "@/component/modals/UpdateStatusModal";
+import PageLoading from "@/component/pageloader/PageLoading";
 
-const Appliedjobs = () => {
-  const userId = Cookies.get("userId")
+
+
+const AppliedJobs = () => {
+  const userId = Cookies.get("userId");
   console.log(userId);
-  const { data, error, loading } = useFetch(
-    `/api/jobs/appliedjobs?userId=${userId}`
-  );
-  const [showStatus, setShowStatus] = useState(false);
+  const [appliedJobs, setAppliedJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+    const [show, setShow] = useState(false);
 
-  const showUserStatus = () => {
-    setShowStatus(true);
-  };
+ const showStatusUpdate = () => {
+   setShow(true);
+ };
 
-   if (loading) {
-     return <PageLoading />;
-   }
+  useEffect(() => {
+    const loadAppliedJobs = async () => {
+      try {
+        const data = await fetchAppliedJobs(userId);
+        setAppliedJobs(data.appliedJobs);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-   if (error) {
-     return (
-       <div>
-         <p>Error fetching jobs</p>
-       </div>
-     );
-   }
+    loadAppliedJobs();
+  }, [userId]);
 
+  if (error)
     return (
-      <div className="">
-        <UpdateStatusModal show={showStatus} setShow={setShowStatus} />
-        <div className=" container w-11/12  mx-auto ">
-          <h1 className="border-2 border-[#0dcaf0] p-2 text-lg rounded-lg text-center font-semibold my-6 w-8/12 md:w-4/12">
-            My Job Applications
-          </h1>
-          <p className="font-semibold mb-4">View and manage your job status</p>
-
-          <hr className="border-gray-400 mb-2" />
-
-          <div className="container grid grid-cols-1 md:grid-cols-2 md:items-start">
-            <div className="mb-3">
-              <h3 className="font-semibold">Digital Marketer</h3>
-              <p>Google </p>
-              <p>United Kingdom </p>
-              <p>
-                <span className="font-semibold">Date of Application:</span>
-                February 20, 2024
-              </p>
-            </div>
-            <div className="flex justify-start md:justify-end items-center gap-3 md:gap-8">
-              <Link
-                onClick={showUserStatus}
-                href=""
-                className="text-[#0dcaf0] hover:bg-cyan-400 hover:text-white border border-gray-400 rounded-lg p-1 px-2 lg:p-2"
-              >
-                Update Status
-              </Link>
-              <Link
-                href="/joblisting"
-                className="text-white bg-green-700 hover:bg-green-600 rounded-lg p-1 px-2 lg:p-2"
-              >
-                Applied
-              </Link>
-            </div>
-          </div>
-
-          <hr className="border-gray-400 mb-6 mt-4 md:mt-0" />
-        </div>
+      <div className="w-11/12 mx-auto container flex justify-center py-14">
+        Error: {error}
       </div>
     );
-}
- 
-export default Appliedjobs;
+  if (loading)
+    return (
+      <div className="w-11/12 mx-auto container flex justify-center py-14">
+        <PageLoading/>
+      </div>
+    );
+  if (!appliedJobs)
+    return (
+      <div className="w-11/12 mx-auto container flex justify-center py-14">
+        No Data
+      </div>
+    );
+
+  return (
+    <div className="container mx-auto w-11/12  py-6">
+      <UpdateStatusModal show={show} setShow={setShow} />
+      <h2 className="text-lg md:text-2xl font-semibold mb-6 p-3 rounded-lg w-8/12 md:w-4/12 text-center self-center lg:w-[30%] border-2 border-[#0dcaf0]">
+        My Job Applications
+      </h2>
+      <p className="mb-8 font-semibold text-xl">
+        View and manage your job status
+      </p>
+      <div className="space-y-14">
+        {appliedJobs.map((job) => (
+          <div
+            key={job.applicationId}
+            className="bg-white border-t border-b border-black p-4  grid grid-cols-1  md:grid-cols-2"
+          >
+            <div>
+              <h3 className="text-xl font-semibold">{job.jobTitle}</h3>
+              <p className=" font-semibold">{job.company}</p>
+              <p className=" font-semibold">{job.location}</p>
+              <p className="font-semibold">
+                Date of application:{" "}
+                {format(new Date(job.appliedAt), "MMMM d, yyyy")}
+              </p>
+            </div>
+            <div className="flex items-start md:items-center pt-5 md:pt-0 justify-start md:justify-end gap-3">
+              <button
+              onClick={showStatusUpdate}
+              className=" text-[#0DCAF0] border border-gray-200 rounded-lg p-2">
+                Update Status
+              </button>
+              <p
+                className={`  rounded-md px-3 py-2  font-semibold ${
+                  job.status === "Applied"
+                    ? "bg-green-100 text-green-700"
+                    : job.status === "Not hired"
+                    ? "bg-red-100 text-red-700"
+                    : job.status === "Interviewing"
+                    ? "bg-yellow-100 text-yellow-700"
+                    : "bg-gray-100 text-gray-700"
+                }`}
+              >
+                {job.status}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default AppliedJobs;

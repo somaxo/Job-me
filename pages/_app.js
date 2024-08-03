@@ -1,26 +1,25 @@
 import "@/styles/globals.css";
 import Layout from "@/component/Layout";
-import { UserProvider } from "@/context/UserContext";
+import { AppProvider } from "@/context/AppContext";
 
 export default function App({ Component, pageProps, router }) {
-if (router.pathname === "/404" || router.pathname === '/signup' || router.pathname === '/login'){
-  return (
-    <UserProvider>
-      <Component {...pageProps} />
-    </UserProvider>
-  );
-}
-
+  if (
+    router.pathname === "/404" ||
+    router.pathname === "/signup" ||
+    router.pathname === "/login"
+  ) {
+    return (
+      <AppProvider>
+          <Component {...pageProps} />
+      </AppProvider>
+    );
+  }
 
   return (
     <Layout>
-
-      <UserProvider>
-
-      <Component {...pageProps} />
-
-      </UserProvider>
-      
+      <AppProvider>
+          <Component {...pageProps} />
+      </AppProvider>
     </Layout>
   );
 }

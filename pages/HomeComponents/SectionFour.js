@@ -7,7 +7,7 @@ const SectionFour = () => {
     <div className="section-four-bg   ">
       <div className="w-11/12 container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center py-6">
         <div className=" flex flex-col gap-3 justify-start items-start">
-          <h2 className="">
+          <h2 className="font-semibold">
             Get Jobs that match your Qualifications and Skill Set
           </h2>
           <p className="">

@@ -5,10 +5,14 @@ import { useState, useEffect } from "react";
 import PageLoading from "@/component/pageloader/PageLoading";
 import { formatDistanceToNow } from "date-fns";
 import useFetch from "@/hooks/useFetch";
+import { all } from "axios";
 
+const LargeCard = (jobs, loading, error) => {
 
-const LargeCard = () => {
-  const { allJobs: jobs, error, loading } = useFetch("/api/jobs/jobupload");
+  console.log(jobs.jobs);
+  const allJobs = jobs.jobs
+  console.log('check', allJobs);
+  // const { allJobs: jobs, error, loading } = useFetch("/api/jobs/jobupload");
   // const [loading, setLoading] = useState(true);
   // const [jobs, setJobs] = useState([]);
 
@@ -40,23 +44,22 @@ const LargeCard = () => {
   //   getJobs();
   // }, []);
 
-if(loading){
-  return(
-    <PageLoading/>
-  )
-}
 
- if(error){
-  return(
-    <div>
-      <p>Error fetching jobs</p>
-    </div>
-  )
- }
+  if (loading) {
+    return <PageLoading />;
+  }
+
+  if (error) {
+    return (
+      <div>
+        <p>Error fetching jobs</p>
+      </div>
+    );
+  }
   return (
     <div>
-      {jobs &&
-        jobs.map((job) => (
+      {allJobs &&
+        allJobs.map((job) => (
           <div
             key={job.id}
             className="container gap-16 grid md:grid-cols-4 justify-between items-center mx-auto w-11/12 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mt-5 p-5  "
@@ -82,15 +85,16 @@ if(loading){
               </span>
               <p className="flex justify-start items-center gap-1 text-gray-600 ">
                 <Image src="/time.png" width={20} height={20} alt="clock" />
-                Posted {" "}
+                Posted{" "}
                 {/* {formatDistanceToNow( new Date(job?.createdAt), {
                   addSuffix: true,
                 })} */}
-
-                 {job?.createdAt ? (formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })) : ("Invalid date"
-  )}
-  
-  {/* formatDistanceToNow(new Date(job?.createdAt), {addSuffix: true})} : " " */}
+                {job?.createdAt
+                  ? formatDistanceToNow(new Date(job.createdAt), {
+                      addSuffix: true,
+                    })
+                  : "Invalid date"}
+                {/* formatDistanceToNow(new Date(job?.createdAt), {addSuffix: true})} : " " */}
               </p>
             </div>
             {/* LOCATION DIV */}

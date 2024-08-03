@@ -7,8 +7,9 @@ import { formatDistanceToNow } from "date-fns";
 import useFetch from "@/hooks/useFetch";
 import PageLoading from "@/component/pageloader/PageLoading";
 
-const SmallCard = () => {
-  const { allJobs: jobs, error, loading } = useFetch("/api/jobs/jobupload");
+const SmallCard = (jobs, loading, error) => {
+  
+  // const { allJobs: jobs, error, loading } = useFetch("/api/jobs/jobupload");
   // const [loading, setLoading] = useState(true);
   // const [jobs, setJobs] = useState([]);
 

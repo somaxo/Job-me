@@ -8,6 +8,9 @@ import { useRouter } from "next/router";
 import { formatDistanceToNow } from "date-fns";
 import useFetch from "@/hooks/useFetch";
 import Cookies from "js-cookie";
+import MapComponent from "@/component/Map";
+
+
 
 const JobDetailPage = () => {
   const [job, setJob] = useState(null)
@@ -106,9 +109,7 @@ if (id) {
                   className=""
                 />
                 Date Posted:
-                <span className="text-[#0dcaf0] font-normal">
-                  {postedTime}
-                </span>
+                <span className="text-[#0dcaf0] font-normal">{postedTime}</span>
               </p>
               <p className="flex justify-start items-center gap-1 font-semibold my-2 lg:my-4">
                 <Image
@@ -138,13 +139,16 @@ if (id) {
           </div>
           {/* MAP */}
 
-          <Image
+          {/* <Image
             src="/map.png"
             width={50}
             height={50}
             alt="map"
             className="hidden lg:block lg:my-8 lg:w-full lg:h-80"
-          />
+          /> */}
+          <div className="my-5">
+            <MapComponent />
+          </div>
         </div>
 
         {/* BULLET POINT CONTENT */}
@@ -160,7 +164,10 @@ if (id) {
 
           <ul>
             {job.duties.map((duty) => (
-              <li key={duty._id} className="flex justify-start items-center">
+              <li
+                key={duty._id}
+                className="flex justify-start items-center leading-8"
+              >
                 <Image src="/tick.png" width={20} height={20} alt="tick" />
                 {duty}
               </li>
@@ -173,7 +180,10 @@ if (id) {
 
           <ul>
             {job.skills.map((skill) => (
-              <li key={skill._id} className="flex justify-start items-center">
+              <li
+                key={skill._id}
+                className="flex justify-start items-center"
+              >
                 <Image src="/tick.png" width={20} height={20} alt="tick" />
                 {skill}
               </li>
@@ -182,7 +192,7 @@ if (id) {
 
           <div className="my-6">
             <Link
-            onClick={updateJobId}
+              onClick={updateJobId}
               href="/jobapplication"
               className="btn bg-[#0dcaf0] rounded-lg text-white p-2 my-5"
             >

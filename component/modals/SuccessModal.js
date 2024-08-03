@@ -9,8 +9,8 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 
-export default function SuccessModal() {
-  const [open, setOpen] = useState(true);
+export default function SuccessModal({open, setOpen}) {
+  // const [open, setOpen] = useState(true);
 
   return (
     <Dialog open={open} onClose={setOpen} className="relative z-10">

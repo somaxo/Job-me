@@ -7,10 +7,9 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import axios from "axios";
+import SuccessModal from "@/component/modals/SuccessModal";
 // import { useUser } from "@/context/UserContext"
-
-
-
 
 const JobApplicationPage = () => {
   const {
@@ -19,74 +18,75 @@ const JobApplicationPage = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const userId = Cookies.get("userId")
-  const jobId = Cookies.get("jobId")
-  const [loading, setLoading] = useState(false)
-  const router = useRouter()
-  // const { userId } = useUser()
-  // const { jobId } = router.query
+  const userId = Cookies.get("userId");
+  const jobId = Cookies.get("jobId");
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [formError, setFormError] = useState("")
+  const router = useRouter();
 
   console.log(userId);
   console.log(jobId);
 
-   useEffect(() => {
-     if (!jobId) {
-       console.error("Job Id is missing from query parameters");
-     }
-   }, [jobId]);
+  //  useEffect(() => {
+  //    if (!jobId) {
+  //      console.error("Job Id is missing from query parameters");
+  //    }
+  //  }, [jobId]);
 
   const onSubmit = async (data) => {
-console.log(data);
-    // if (!userId || !jobId) {
-    //   console.error("User or job ID not available");
-    //   return;
-    // }
+    console.log(data);
+    if (!userId || !jobId) {
+      console.error("User or job ID not available");
+      return;
+    }
+    setLoading(true);
 
     // console.log(data);
-    // setLoading(true);
-    // try {
-    //   const formData = new FormData();
-    //   formData.append("userId", userId); 
-    //   formData.append("jobId", jobId);
-    //   formData.append("firstName", data.firstname);
-    //   formData.append("lastName", data.lastname);
-    //   formData.append("email", data.email);
-    //   formData.append("phoneNumber", data.phone);
-    //   formData.append("coverLetter", data.coverLetter);
-    //   formData.append("resume", data.resume[0]);
 
+    try {
+      const formData = new FormData();
+      formData.append("userId", userId);
+      formData.append("jobId", jobId);
+      formData.append("firstName", data.firstname);
+      formData.append("lastName", data.lastname);
+      formData.append("email", data.email);
+      formData.append("phoneNumber", data.phone);
+      formData.append("coverLetter", data.coverLetter);
+      formData.append("resume", data.resume[0]);
 
+      const res = await axios.post("/api/jobs/submitapplication", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
-    //   const res = await fetch("/api/jobs/submitapplication", {
-    //     method: "POST",
-    //     body: new FormData(formData),
-    //   });
+      console.log(res);
 
-    //   console.log(res);
-
-    //   const responseData = await res.json();
-
-    //   console.log(responseData);
-
-    //   if (res.ok) {
-    //     setLoading(false);
-    //     // add toaster here
-    //     console.log("Message sent successfully:", responseData);
-    //     reset();
-    //     router.push("/joblisting");
-    //   }
-    // } catch (error) {
-    //   setLoading(false);
-    //   console.error("Something went wrong:", error);
-    // }
+      if (res.status === 200){
+        setOpen(true)
+        console.log("Application submitted successfully:", );
+        //  you can add a success message here or redirect the user
+        router.push("/appliedjobs");
+      }
+    } catch (error) {
+      console.error(
+        "Error submitting application:",
+        error.response?.data?.message || error.message
+      );
+      setFormError(error.response.data.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="mt-1 mb-20">
+      <SuccessModal open={open} setOpen={setOpen} />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className=" bg-[#DBF7FD] container lg:w-8/12 mx-auto justify-center items-center  text-gray-500 text-left rounded-lg p-2 py-4"
       >
+        {formError && <p className={`flex justify-start items-start w-11/12 mx-auto text-red-500 font-semibold`}>{formError}</p>}
+      
         <div className="w-11/12 lg:w-11/12 lg:mt-5 mx-auto">
           {/* BREAKPOINT ONE */}
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:justify-between lg:items-center lg:gap-8 md:mt-4">
@@ -223,8 +223,7 @@ console.log(data);
           {/* SUBMIT BUTTON */}
           <button
             type="submit"
-            className="container justify-center items-center btn w-28 font-light bg-[#0dcaf0] mx-auto rounded-md text-center lg:rounded-lg p-2 text-white lg:text-lg "
-            disabled={loading}
+            className="justify-start items-start btn w-28 font-light bg-[#0dcaf0] mx-auto rounded-md text-center lg:rounded-lg p-2 text-white lg:text-lg "
           >
             {loading ? <Loading /> : <span>Apply Now</span>}
           </button>

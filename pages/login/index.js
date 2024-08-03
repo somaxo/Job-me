@@ -8,7 +8,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Loading from "@/component/loader/Loading";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/context/AppContext";
 
 const Login = () => {
   const {
@@ -17,52 +17,49 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
-  
+
   const [loading, setLoading] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   // const [formError, setFormError] = useState("");
- const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
   const onSubmit = async (data) => {
     setLoading(true);
     try {
       console.log(data);
-      const res = await fetch('api/auth/signin',{
-        method: 'POST',
+      const res = await fetch("api/auth/signin", {
+        method: "POST",
         headers: {
-          "Content-Type":"application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      })
+      });
       const responseData = await res.json();
 
-      if(res.ok){
-          setLoading(false);
-        console.log('login successful:', responseData);
+      if (res.ok) {
+        setLoading(false);
+        console.log("login successful:", responseData);
         console.log(responseData.user.id);
-       Cookies.set("userId", responseData.user.id);
+        Cookies.set("userId", responseData.user.id);
         // localStorage.setItem('token', responseData.token)
         Cookies.set("token", responseData.token, {
-          expires:1,
-          secure: process.env.NODE_ENV === "production", 
-          sameSite:"strict"
-        })
-        router.push('/joblisting')
-         reset();
-      }else {
-        console.error('login failed:', responseData);
+          expires: 1,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "strict",
+        });
+        router.push("/joblisting");
+        reset();
+      } else {
+        console.error("login failed:", responseData);
       }
     } catch (error) {
-    
       console.error("Somthing went wrong:", error);
     }
-    
   };
   const toggleEye = () => {
-  setShow(!show);
-  }
+    setShow(!show);
+  };
   const toggleShow = show ? "text" : "password";
-
 
   return (
     <div className="login-bg">
