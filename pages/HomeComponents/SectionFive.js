@@ -6,14 +6,14 @@ const SectionFive = () => {
     <div className="container w-11/12 justify-center items-center mx-auto text-center mt-10 mb-10 ">
       <div className="">
         <p className=" text-[#0DCAF0] md:text-xl">Testimonials</p>
-        <h2 className="text-lg font-semibold md:text-2xl">
+        <h2 className="font-semibold text-xl lg:text-2xl">
           Feedbacks from Clients
         </h2>
       </div>
       {/* BOXES */}
       <div className="grid grid-cols-1 lg:grid-cols-3 ">
         {/* ONE */}
-        <div className="bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl ">
+        <div className="bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-[355px] lg:w-11/12 ">
           <div className="">
             <Image
               src="/img1.png"
@@ -33,7 +33,7 @@ const SectionFive = () => {
         </div>
 
         {/* TWO */}
-        <div className="hidden lg:block bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl ">
+        <div className="hidden lg:block bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-[355px] lg:w-11/12  ">
           <div className="">
             <Image
               src="/img1.png"
@@ -52,7 +52,7 @@ const SectionFive = () => {
           </div>
         </div>
         {/* THREE */}
-        <div className="hidden lg:block bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-96 md:text-lg lg:w-11/12 xl:text-xl ">
+        <div className="hidden lg:block bg-[rgb(245,243,243,0.6)] text-[rgb(84,82,82)] rounded-xl h-80 mt-8 p-1 md:w-6/12 mx-auto md:h-[355px] lg:w-11/12  ">
           <div className="">
             <Image
               src="/img1.png"
